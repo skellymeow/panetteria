@@ -222,34 +222,41 @@ export default function MenuPage() {
       </section>
 
       {/* filters + sort */}
-      <section className="py-8 border-y bg-background-secondary/50 backdrop-blur-sm sticky top-20 z-40">
+      <section className="py-4 sm:py-8 border-y bg-background-secondary/50 backdrop-blur-sm sticky top-20 z-40">
         <div className="container">
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <div className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
-              {categories.map((cat) => (
+          <div className="menu-filters">
+            {/* categories */}
+            <div className="category-buttons">
+              {categories.map((category) => (
                 <Button
-                  key={cat.id}
-                  variant={activeCategory === cat.id ? "default" : "ghost"}
-                  className="rounded-full whitespace-nowrap"
-                  onClick={() => setActiveCategory(cat.id)}
+                  key={category.id}
+                  variant={activeCategory === category.id ? "default" : "ghost"}
+                  size="sm"
+                  className="w-full sm:w-auto"
+                  onClick={() => setActiveCategory(category.id)}
                 >
-                  {cat.icon && <cat.icon weight="duotone" className="mr-2 size-4" />}
-                  {cat.label}
+                  <category.icon weight="duotone" className="size-4 mr-2" />
+                  {category.label}
                 </Button>
               ))}
             </div>
-            <div className="flex items-center gap-2 ml-auto">
+
+            {/* sort */}
+            <div className="sort-buttons">
               <Button
                 variant={activeSort === "popular" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveSort("popular")}
+                className="w-full sm:w-auto"
               >
+                <Fire weight="duotone" className="size-4 mr-2" />
                 Popular
               </Button>
               <Button
                 variant={activeSort === "az" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveSort("az")}
+                className="w-full sm:w-auto"
               >
                 A-Z
               </Button>
@@ -258,18 +265,17 @@ export default function MenuPage() {
         </div>
       </section>
 
-      {/* menu grid */}
-      <section className="py-20">
+      {/* menu grid - updated for mobile */}
+      <section className="py-12 sm:py-20">
         <div className="container">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredItems.map((item) => (
               <div key={item.name} className="group menu-card">
-                <div className="menu-image">
+                <div className="menu-image aspect-[4/3] relative overflow-hidden rounded-t-xl">
                   <Image
                     src={`/menu/${item.image}`}
                     alt={item.name}
-                    width={400}
-                    height={300}
+                    fill
                     className="object-cover"
                   />
                   {item.isWeekendOnly && (
@@ -278,33 +284,33 @@ export default function MenuPage() {
                     </div>
                   )}
                 </div>
-                <div className="menu-content">
-                  <div className="flex items-center gap-2">
+                <div className="p-4 sm:p-6 space-y-3">
+                  <div className="flex flex-wrap gap-2">
                     {item.category.map(cat => (
                       <div key={cat} className="menu-badge">
                         {cat}
                       </div>
                     ))}
                   </div>
-                  <h3 className="menu-title">{item.name}</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold">{item.name}</h3>
                   {item.description && (
-                    <p className="menu-description">{item.description}</p>
+                    <p className="text-sm sm:text-base text-muted-foreground">{item.description}</p>
                   )}
-                  <div className="menu-meta">
+                  <div className="flex flex-wrap items-center gap-4 text-sm">
                     <span className="flex items-center gap-1.5">
-                      <Clock weight="duotone" className="menu-icon" />
+                      <Clock weight="duotone" className="size-4" />
                       Fresh Daily
                     </span>
                     {item.isBestseller && (
                       <span className="flex items-center gap-1.5">
-                        <Fire weight="duotone" className="menu-icon" />
+                        <Fire weight="duotone" className="size-4" />
                         Bestseller
                       </span>
                     )}
                   </div>
-                  <div className="flex flex-wrap gap-2 mt-3">
+                  <div className="flex flex-wrap gap-2">
                     {item.tags.map(tag => (
-                      <span key={tag} className="text-xs text-muted-foreground px-2 py-1 rounded-full bg-accent/50">
+                      <span key={tag} className="text-xs px-2 py-1 rounded-full bg-accent/50 text-muted-foreground">
                         {tag}
                       </span>
                     ))}
