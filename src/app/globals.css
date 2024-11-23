@@ -92,11 +92,15 @@
   }
 
   .section {
-    @apply py-16 md:py-20 lg:py-24 relative;
+    @apply relative;
+    padding-top: clamp(1rem, 3vh, 2rem);
+    padding-bottom: clamp(2rem, 5vh, 4rem);
   }
 
   .section-hero {
-    @apply min-h-[calc(100vh-4rem)] flex items-center relative overflow-hidden border-b pb-8 md:pb-12;
+    @apply min-h-[50vh] flex items-center relative overflow-hidden border-b;
+    padding-top: clamp(1rem, 3vh, 2rem);
+    padding-bottom: clamp(2rem, 5vh, 4rem);
   }
 
   .bg-pattern {
@@ -287,34 +291,25 @@
   }
 
   .menu-card {
-    @apply relative bg-background rounded-xl overflow-hidden border shadow-sm;
+    @apply bg-background border rounded-lg overflow-hidden shadow-sm 
+           transition-all duration-300 hover:shadow-md;
   }
 
   .menu-image {
-    @apply relative aspect-[4/3] overflow-hidden;
+    @apply relative aspect-[3/2] overflow-hidden;
   }
 
   .menu-image img {
-    @apply w-full h-full object-cover transition-transform duration-500;
+    @apply w-full h-full object-cover transition-transform duration-300
+           group-hover:scale-105;
   }
 
-  .menu-content {
-    @apply p-6 space-y-3;
+  .menu-filters {
+    @apply flex flex-wrap gap-2 items-center justify-between;
   }
 
   .menu-badge {
-    @apply text-xs font-medium px-2.5 py-1 rounded-full;
-    background: hsl(var(--accent));
-  }
-
-  /* position weekend badge in top-right, above category badges */
-  .menu-card .absolute {
-    @apply z-10;
-  }
-
-  /* ensure category badges don't overlap with weekend badge */
-  .menu-content .flex {
-    @apply flex-wrap;
+    @apply text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary;
   }
 
   .menu-title {
@@ -357,6 +352,72 @@
   /* remove that scrollbar stuff */
   .hide-scrollbar {
     @apply overflow-visible;
+  }
+
+  /* decorative corner accents */
+  .corner-accents {
+    @apply relative;
+  }
+
+  .corner-accents::before,
+  .corner-accents::after {
+    content: '';
+    @apply absolute w-16 h-16 pointer-events-none;
+    background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h48c8.837 0 16 7.163 16 16v48H16C7.163 64 0 56.837 0 48V0z' fill='hsl(25 30% 40% / 0.1)'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .corner-accents::before {
+    @apply top-6 left-6;
+    transform: rotate(0deg);
+  }
+
+  .corner-accents::after {
+    @apply top-6 right-6;
+    transform: rotate(90deg);
+  }
+
+  /* refined vignette effect */
+  .vignette-overlay {
+    @apply pointer-events-none absolute inset-0;
+    background: radial-gradient(
+      circle at center,
+      transparent 0%,
+      transparent 45%,
+      hsl(var(--foreground) / 0.03) 99%
+    );
+  }
+
+  /* subtle texture overlay */
+  .texture-overlay {
+    @apply pointer-events-none absolute inset-0 opacity-[0.015];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.25'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* paper grain effect */
+  .paper-grain {
+    @apply pointer-events-none absolute inset-0 opacity-[0.02];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='5'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23paper)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  /* refined grid pattern */
+  .grid-pattern {
+    @apply relative;
+    background-image: 
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: center;
+    opacity: 0.05;
+  }
+
+  /* artisanal paper texture */
+  .paper-texture {
+    @apply relative;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDiffuseLighting lighting-color='%23fff' surfaceScale='2'%3E%3CfeDistantLight azimuth='45' elevation='60'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23paper)' opacity='0.1'/%3E%3C/svg%3E");
   }
 }
 
@@ -516,4 +577,32 @@
   .h-screen-small {
     height: 100svh;
   }
+}
+
+/* update hero section spacing - make it much more compact */
+.section-hero {
+  @apply min-h-[50vh] flex items-center relative overflow-hidden border-b;
+  padding-top: clamp(1rem, 3vh, 2rem);
+  padding-bottom: clamp(2rem, 5vh, 4rem);
+}
+
+/* update standard section spacing */
+.section {
+  @apply relative;
+  padding-top: clamp(1rem, 3vh, 2rem);
+  padding-bottom: clamp(2rem, 5vh, 4rem);
+}
+
+/* hero sections in content pages */
+.page-hero {
+  @apply relative overflow-hidden;
+  padding-top: clamp(1.5rem, 4vh, 3rem);
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
+}
+
+/* specific menu page hero adjustment */
+.menu-hero {
+  @apply relative overflow-hidden;
+  padding-top: clamp(1rem, 3vh, 2rem);
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
 }

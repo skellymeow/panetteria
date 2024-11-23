@@ -120,9 +120,8 @@ export default function Home() {
                       <div className="text-muted-foreground capitalize mb-1 flex items-center justify-between">
                         {day}
                         {isToday && (
-                          <span className={`text-sm font-medium ${statusColor} flex items-center gap-1.5`}>
+                          <span className={`text-sm font-medium ${statusColor}`}>
                             <span className={`size-2 rounded-full ${isOpen ? "bg-emerald-500" : "bg-red-500"}`} />
-                            {status}
                           </span>
                         )}
                       </div>
@@ -222,18 +221,22 @@ export default function Home() {
             ))}
           </div>
 
-          {/* cta */}
-          <div className="flex justify-center">
+          {/* chunky cta */}
+          <div className="mt-16 p-8 sm:p-12 bg-primary/5 rounded-3xl border-2 border-primary/10 text-center space-y-6">
+            <h3 className="text-2xl sm:text-3xl font-bold">Ready to explore our full selection?</h3>
+            <p className="text-lg text-muted-foreground">
+              Discover our complete range of artisanal breads, pastries, and seasonal specials.
+            </p>
             <Button 
               size="lg" 
-              className="group"
+              className="group text-lg px-8 py-6 h-auto"
               asChild
             >
               <Link href="/menu">
                 View Full Menu
                 <Bread 
                   weight="duotone" 
-                  className="ml-2 size-5 transition-transform group-hover:translate-x-1" 
+                  className="ml-2 size-6 transition-transform group-hover:translate-x-1" 
                 />
               </Link>
             </Button>

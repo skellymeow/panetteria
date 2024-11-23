@@ -23,7 +23,11 @@ export function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b">
-        <div className="container flex items-center justify-between h-20">
+        <div className="texture-overlay" />
+        <div className="vignette-overlay" />
+        <div className="paper-grain" />
+        
+        <div className="container flex items-center justify-between h-20 relative">
           <Link href="/" className="hover:opacity-80 transition-opacity">
             <Image 
               src="/logo.jpg"

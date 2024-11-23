@@ -205,13 +205,13 @@ export default function MenuPage() {
 
   return (
     <main className="min-h-screen pt-20">
-      {/* hero section - updated to match home/about style */}
-      <section className="relative py-20 overflow-hidden">
+      {/* hero section - updated with tighter mobile spacing */}
+      <section className="menu-hero">
         <div className="absolute inset-0 bg-grid-gray-100 dark:bg-grid-gray-800 mask-radial-faded" />
         <div className="absolute inset-0 bg-gradient-subtle" />
         
         <div className="container relative">
-          <div className="max-w-2xl mx-auto text-center space-y-6">
+          <div className="max-w-2xl mx-auto text-center space-y-4">
             <div className="content-badge">Our Daily Selection</div>
             <h1 className="text-4xl md:text-5xl font-bold">Our Menu</h1>
             <p className="text-lg text-muted-foreground">
@@ -222,56 +222,56 @@ export default function MenuPage() {
       </section>
 
       {/* filters + sort */}
-      <section className="py-4 sm:py-8 border-y bg-background-secondary/50 backdrop-blur-sm sticky top-20 z-40">
+      <section className="py-2 sm:py-4 border-y bg-background-secondary/50 backdrop-blur-sm sticky top-20 z-40">
         <div className="container">
-          <div className="menu-filters">
-            {/* categories */}
-            <div className="category-buttons">
+          <div className="flex flex-wrap gap-2 justify-between">
+            {/* categories - simplified for mobile */}
+            <div className="flex flex-wrap gap-1.5">
               {categories.map((category) => (
                 <Button
                   key={category.id}
                   variant={activeCategory === category.id ? "default" : "ghost"}
                   size="sm"
-                  className="w-full sm:w-auto"
                   onClick={() => setActiveCategory(category.id)}
+                  className="h-8 px-3"
                 >
-                  <category.icon weight="duotone" className="size-4 mr-2" />
-                  {category.label}
+                  <category.icon weight="duotone" className="size-3.5 mr-1.5" />
+                  <span className="text-sm">{category.label}</span>
                 </Button>
               ))}
             </div>
 
-            {/* sort */}
-            <div className="sort-buttons">
+            {/* sort - simplified */}
+            <div className="flex gap-1.5">
               <Button
                 variant={activeSort === "popular" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveSort("popular")}
-                className="w-full sm:w-auto"
+                className="h-8 px-3"
               >
-                <Fire weight="duotone" className="size-4 mr-2" />
-                Popular
+                <Fire weight="duotone" className="size-3.5 mr-1.5" />
+                <span className="text-sm">Popular</span>
               </Button>
               <Button
                 variant={activeSort === "az" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveSort("az")}
-                className="w-full sm:w-auto"
+                className="h-8 px-3"
               >
-                A-Z
+                <span className="text-sm">A-Z</span>
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* menu grid - updated for mobile */}
-      <section className="py-12 sm:py-20">
+      {/* menu grid - updated for 2 columns on mobile */}
+      <section className="py-8 sm:py-12">
         <div className="container">
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
             {filteredItems.map((item) => (
               <div key={item.name} className="group menu-card">
-                <div className="menu-image aspect-[4/3] relative overflow-hidden rounded-t-xl">
+                <div className="menu-image aspect-[3/2]">
                   <Image
                     src={`/menu/${item.image}`}
                     alt={item.name}
@@ -279,38 +279,19 @@ export default function MenuPage() {
                     className="object-cover"
                   />
                   {item.isWeekendOnly && (
-                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/90 text-white text-sm">
+                    <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded-full bg-primary/90 text-white text-[10px] sm:text-xs">
                       Weekend Only
                     </div>
                   )}
                 </div>
-                <div className="p-4 sm:p-6 space-y-3">
-                  <div className="flex flex-wrap gap-2">
-                    {item.category.map(cat => (
-                      <div key={cat} className="menu-badge">
-                        {cat}
-                      </div>
-                    ))}
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-semibold">{item.name}</h3>
+                <div className="p-2 sm:p-4 space-y-1 sm:space-y-2">
+                  <h3 className="font-medium text-sm sm:text-lg leading-tight">{item.name}</h3>
                   {item.description && (
-                    <p className="text-sm sm:text-base text-muted-foreground">{item.description}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">{item.description}</p>
                   )}
-                  <div className="flex flex-wrap items-center gap-4 text-sm">
-                    <span className="flex items-center gap-1.5">
-                      <Clock weight="duotone" className="size-4" />
-                      Fresh Daily
-                    </span>
-                    {item.isBestseller && (
-                      <span className="flex items-center gap-1.5">
-                        <Fire weight="duotone" className="size-4" />
-                        Bestseller
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1 sm:gap-1.5">
                     {item.tags.map(tag => (
-                      <span key={tag} className="text-xs px-2 py-1 rounded-full bg-accent/50 text-muted-foreground">
+                      <span key={tag} className="text-[10px] sm:text-xs px-1.5 py-0.5 rounded-full bg-accent/50 text-muted-foreground">
                         {tag}
                       </span>
                     ))}
@@ -320,16 +301,16 @@ export default function MenuPage() {
             ))}
           </div>
         </div>
-
-        {/* allergy note */}
-        <div className="container mt-20">
-          <div className="bg-accent/50 rounded-xl p-6">
-            <p className="text-sm text-muted-foreground">
-              {MENU_CONTENT.allergyNote}
-            </p>
-          </div>
-        </div>
       </section>
+
+      {/* allergy note - fixed spacing */}
+      <div className="container pb-12">
+        <div className="bg-accent/50 rounded-xl p-6">
+          <p className="text-sm text-muted-foreground">
+            {MENU_CONTENT.allergyNote}
+          </p>
+        </div>
+      </div>
     </main>
   )
 } 
