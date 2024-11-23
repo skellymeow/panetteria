@@ -59,6 +59,7 @@ export function LeadCaptureForm({ onSuccess }: { onSuccess: () => void }) {
           placeholder="Your name"
           {...register("name")}
           error={errors.name?.message}
+          className="resize-none"
         />
       </div>
       <div>
@@ -67,6 +68,7 @@ export function LeadCaptureForm({ onSuccess }: { onSuccess: () => void }) {
           type="email"
           {...register("email")}
           error={errors.email?.message}
+          className="resize-none"
         />
       </div>
       <div>
@@ -74,6 +76,8 @@ export function LeadCaptureForm({ onSuccess }: { onSuccess: () => void }) {
           placeholder="How can we help?"
           {...register("message")}
           error={errors.message?.message}
+          className="resize-none h-[120px]"
+          rows={4}
         />
       </div>
       <Button type="submit" className="w-full" disabled={isSubmitting}>

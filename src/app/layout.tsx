@@ -1,11 +1,18 @@
+import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
-import { Inter } from "next/font/google"
+import { Poppins, Source_Code_Pro } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+})
+
+const sourceCodePro = Source_Code_Pro({
+  subsets: ["latin"],
+  variable: "--font-source-code",
 })
 
 export default function RootLayout({
@@ -14,11 +21,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <Header />
-        <main className="pt-16">{children}</main>
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${poppins.variable} ${sourceCodePro.variable}`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          <main className="pt-16">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -24,41 +24,20 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-              className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-medium text-sm backdrop-blur-sm"
-            >
+            <div className="headline-badge content-badge">
               {HERO_CONTENT.badge}
-            </motion.div>
+            </div>
             
-            <motion.h1 
-              className="text-balance relative"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
+            <h1 className="headline-stagger headline-stagger-1">
               {HERO_CONTENT.title}
-              <span className="text-primary block mt-2 relative">
+              <span className="headline-subtitle text-primary block mt-2">
                 {HERO_CONTENT.subtitle}
-                <motion.span 
-                  className="absolute -z-10 inset-0 bg-primary/5 rounded-lg blur-2xl"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4, duration: 1 }}
-                />
               </span>
-            </motion.h1>
+            </h1>
             
-            <motion.p 
-              className="text-xl text-muted-foreground relative z-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-            >
+            <p className="headline-stagger headline-stagger-2 text-xl text-muted-foreground">
               {HERO_CONTENT.description}
-            </motion.p>
+            </p>
           </motion.div>
 
           <motion.div 

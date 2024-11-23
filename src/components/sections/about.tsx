@@ -37,18 +37,17 @@ export function About() {
   return (
     <>
       <AnimatedSection variant="fadeIn">
-        <section className={`${LAYOUT.section.spacing.default} overflow-hidden relative`}>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(26,115,232,0.1),rgba(255,255,255,0)_50%)] pointer-events-none" />
+        <section className="section">
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
               <div className="space-y-8">
                 <div className="space-y-6">
-                  <div className={STYLE.badge.primary}>About Us</div>
-                  <h1>
+                  <div className="headline-badge content-badge">About Us</div>
+                  <h1 className="headline-stagger headline-stagger-1">
                     Our Story
-                    <span className="text-primary block mt-2">And Mission</span>
+                    <span className="headline-subtitle text-primary block mt-2">And Mission</span>
                   </h1>
-                  <p className="text-xl text-muted-foreground max-w-2xl">
+                  <p className="headline-stagger headline-stagger-2 text-xl text-muted-foreground">
                     {ABOUT_CONTENT.description}
                   </p>
                 </div>
@@ -77,8 +76,7 @@ export function About() {
       </AnimatedSection>
 
       <AnimatedSection variant="slideUp" delay={0.2}>
-        <section className={`${LAYOUT.section.spacing.default} bg-background-secondary relative`}>
-          <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+        <section className="section-tight bg-background-secondary">
           <div className="container">
             <h2 className="text-center mb-16">Our Values</h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -99,8 +97,7 @@ export function About() {
       </AnimatedSection>
 
       <AnimatedSection variant="fadeIn" delay={0.1}>
-        <section className={`${LAYOUT.section.spacing.default} bg-background relative`}>
-          <div className="absolute inset-0 bg-dot-pattern opacity-5" />
+        <section className="section bg-background">
           <div className="container">
             <h2 className="text-center mb-16">Our Journey</h2>
             <div className="max-w-3xl mx-auto">
@@ -128,7 +125,7 @@ export function About() {
       </AnimatedSection>
 
       <AnimatedSection variant="slideUp" delay={0.2}>
-        <section className={`${LAYOUT.section.spacing.default} bg-background relative`}>
+        <section className="section-compact">
           <div className="absolute inset-0 bg-gradient-accent" />
           <div className="container relative">
             <CTA 

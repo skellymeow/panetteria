@@ -181,21 +181,30 @@ export const MAP_CONFIG = {
     lng: -83.0886
   },
   zoom: 14,
-  address: "Amherstburg, ON N9V 1K9, Canada",
+  address: "248 Ramsay St, Amherstburg, ON N9V 1Y2",
 } as const
 
 export const SITE_CONFIG = {
-  name: "Local Business Name",
-  description: "Professional services in Amherstburg, Ontario",
+  name: "The Panetteria",
+  description: "Artisanal bakery in Amherstburg, Ontario",
   contact: {
-    phone: "(519) 123-4567",
-    email: "info@business.com",
-    address: "123 Main St, Amherstburg, ON N9V 1K9",
+    phone: "(519) 730-1801",
+    email: "thepanetteria@gmail.com",
+    address: "248 Ramsay St, Amherstburg, ON N9V 1Y2",
   },
   social: {
-    facebook: "https://facebook.com/business",
-    instagram: "https://instagram.com/business",
+    facebook: "https://www.facebook.com/thepanetteria",
+    instagram: "https://www.instagram.com/thepanetteria"
   },
+  hours: {
+    monday: "Closed",
+    tuesday: "Closed",
+    wednesday: "9am - 3pm",
+    thursday: "9am - 3pm",
+    friday: "9am - 4pm",
+    saturday: "9am - 4pm",
+    sunday: "9am - 3pm"
+  }
 } as const
 
 export const LEAD_FORM = {
@@ -348,4 +357,66 @@ export const THEME_CONFIG = {
     dark: 'rgb(31 41 55 / 0.1)',
     size: '32px'
   }
+} as const
+
+export const MENU_CONTENT = {
+  intro: "The following is a sample of The Panetteria's staples. However, we encourage you to follow us on Instagram and Facebook for more up-to-date information regarding changing flavours and new products!",
+  categories: [
+    {
+      title: "Breads",
+      items: [
+        "Classic Sourdough",
+        "Multigrain Sourdough",
+        "Focaccia",
+        "Baguette",
+        "Olive Sourdough (weekends)",
+        "Rye Sourdough (weekends)",
+        "Walnut-Raisin Sourdough (weekends)",
+      ]
+    },
+    {
+      title: "Pastries",
+      items: [
+        "Croissant",
+        "Danish",
+        "Pain au Chocolat",
+        "Cookies",
+        "Bars/Brownies",
+        "Cinnamon Buns",
+        "& More!",
+      ]
+    },
+    {
+      title: "Lunch",
+      items: [
+        "Sandwiches",
+        "Quiche",
+        "Pizza",
+      ]
+    }
+  ],
+  allergyNote: "Please note: All efforts are made to accommodate allergies. However, given the size of our facility, we cannot guarantee that anything is 100% free of flour particles. For more information please contact us directly with your specific inquiries.",
+  gallery: [
+    "AlmondCroissant.png",
+    "AlmondTart.png",
+    "strawberry-tart.jpg",
+    "ChocolateTart.png",
+    "Croissant3.png",
+    "cinnamon-bun.jpg",
+    "frenchbread-wall.jpg",
+    "meatpie.jpg",
+    "moody-tart.jpg",
+    "peach-tart.jpg",
+    "Pie3.png",
+    "poc.jpg",
+    "raspberry-cookie.jpg",
+    "row-of-croissants.jpg",
+    "sourdough-sunny.jpg",
+    "sourdough-window.jpg",
+    "Sourdough2.png",
+    "tarts.jpg",
+    "TomatoTart.png",
+    "WalnutRaisin2.png",
+    "wholewheat-sourdough.jpg"
+  ]
 } as const 
