@@ -19,6 +19,7 @@ const navItems = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [imgError, setImgError] = useState(false)
 
   return (
     <>
@@ -29,14 +30,19 @@ export function Header() {
         
         <div className="container flex items-center justify-between h-20 relative">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Image 
-              src="/logo.jpg"
-              alt={SITE_CONFIG.name}
-              width={200}
-              height={50}
-              className="h-12 w-auto"
-              priority
-            />
+            {!imgError ? (
+              <Image 
+                src="/images/logo.png"
+                alt={SITE_CONFIG.name}
+                width={200}
+                height={50}
+                className="h-12 w-auto"
+                priority
+                onError={() => setImgError(true)}
+              />
+            ) : (
+              <span className="text-xl font-bold">{SITE_CONFIG.name}</span>
+            )}
           </Link>
 
           {/* desktop nav */}
