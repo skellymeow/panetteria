@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import { Modal } from "@/components/ui/modal"
 import { LeadCaptureForm } from "@/components/forms/lead-capture"
 import { LEAD_FORM } from "@/lib/constants"
-import { ThemeSwitch } from "@/components/theme-switch"
 import Image from "next/image"
 
 const navItems = [
@@ -68,7 +67,6 @@ export function Header() {
                 />
               </Button>
             </Link>
-            <ThemeSwitch />
           </nav>
 
           {/* mobile menu button */}
@@ -110,7 +108,6 @@ export function Header() {
                     />
                   </Button>
                 </Link>
-                <ThemeSwitch />
               </nav>
             </div>
           )}

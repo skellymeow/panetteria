@@ -11,7 +11,7 @@
     --deep-brown: 25 30% 25%;
     --golden: 35 80% 60%;
     
-    /* updating base system */
+    /* base system - light theme only now */
     --background: 40 30% 98%;
     --background-secondary: 40 30% 96%;
     --foreground: 25 30% 25%;
@@ -25,21 +25,8 @@
     --secondary: var(--sage-green);
     --secondary-hover: 150 15% 35%;
 
-    /* add card colors */
+    /* card colors */
     --card: var(--background);
-    --card-foreground: var(--foreground);
-  }
-
-  .dark {
-    --background: 25 30% 10%;
-    --background-secondary: 25 30% 12%;
-    --foreground: 40 30% 98%;
-    --muted: 25 20% 60%;
-    --border: 25 30% 20%;
-    --accent: 25 30% 15%;
-
-    /* add dark mode card colors */
-    --card: var(--background-secondary);
     --card-foreground: var(--foreground);
   }
 }
